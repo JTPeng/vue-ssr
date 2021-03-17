@@ -1,2 +1,5 @@
 # vue-ssr
-实现vue-ssr渲染
+
+> | 参考 https://ssr.vuejs.org/zh/
+
+- 实现 vue-ssr 渲染
