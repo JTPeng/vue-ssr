@@ -7,6 +7,9 @@
 <script>
 export default {
   name: 'About',
+  metaInfo: {
+    title: '关于',
+  },
 }
 </script>
 
