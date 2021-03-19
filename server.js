@@ -6,6 +6,18 @@ const server = express()
 const fs = require('fs')
 const setupDevServer = require('./build/setup-dev-server')
 const { createBundleRenderer } = require('vue-server-renderer')
+const LRU = require('lru-cache')
+const cache = new LRU({
+  max: 1000,
+  maxAge: 100000, // Important: entries expires after 1 second.
+})
+
+const isCacheable = (req) => {
+  console.log(req.url)
+  if (req.url === '/posts') {
+    return true
+  }
+}
 
 // 用于处理静态资源
 // 请求dist路径时,尝试去./dist下去请求资源
@@ -36,6 +48,13 @@ if (isProd) {
 
 const render = async (req, res) => {
   try {
+    const cacheable = isCacheable(req)
+    if (cacheable) {
+      const html = cache.get(req.url)
+      if (html) {
+        return res.end(html)
+      }
+    }
     const html = await renderer.renderToString(
       {
         title: '测试',

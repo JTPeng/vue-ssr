@@ -14,6 +14,7 @@
     "chokidar": "^3.5.1",
     "cross-env": "^7.0.3",
     "express": "^4.17.1",
+    "lru-cache": "^6.0.0",
     "vue": "^2.6.12",
     "vue-meta": "^2.4.0",
     "vue-router": "^3.5.1",

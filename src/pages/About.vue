@@ -17,6 +17,7 @@ export default {
   serverPrefetch() {
     return this.getList()
   },
+  serverCacheKey: (props) => props.item.id + '::' + props.item.last_updated,
   methods: {
     ...mapActions(['getList']),
   },
