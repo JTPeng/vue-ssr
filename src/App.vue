@@ -1,26 +1,19 @@
 <template>
   <div id="app">
-    <h1>{{ msg }}</h1>
-    <h2>客户端交互</h2>
-    <div>
-      <input v-model="msg" />
-    </div>
-    <div @click="onClick">test</div>
+    <ul>
+      <li>
+        <router-link to="/">Home</router-link>
+      </li>
+      <li>
+        <router-link to="/about">About</router-link>
+      </li>
+    </ul>
+    <router-view></router-view>
   </div>
 </template>
 <script>
 export default {
   name: 'App',
-  data() {
-    return {
-      msg: 'SSR',
-    }
-  },
-  methods: {
-    onClick() {
-      console.log('onClick')
-    },
-  },
 }
 </script>
 <style>

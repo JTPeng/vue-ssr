@@ -46,13 +46,14 @@ const render = async (req, res) => {
     res.setHeader('Content-Type', 'text/html; charset=utf8')
     res.end(html)
   } catch (error) {
-    return res.status(500).end(err.msg)
+    console.log(error)
+    return res.status(500).end(error.msg)
   }
 }
 
 // 设置一个路由
 server.get(
-  '/',
+  '*',
   isProd
     ? render // 生产模式 => 使用构建好的包直接渲染
     : async (req, res) => {
